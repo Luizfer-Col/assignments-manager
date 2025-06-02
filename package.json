@@ -4,11 +4,15 @@
   "version": "1.0.0",
   "scripts": {
     "start": "expo start",
-    "reset-project": "node ./scripts/reset-project.js",
     "android": "expo start --android",
     "ios": "expo start --ios",
     "web": "expo start --web",
-    "lint": "expo lint"
+    "lint": "eslint . --ext .js,.jsx,.ts,.tsx --max-warnings 0",
+    "lint:fix": "eslint . --ext .js,.jsx,.ts,.tsx --fix",
+    "format": "prettier --write \"**/*.{js,jsx,ts,tsx,json,md}\"",
+    "validate": "npm run lint && npm run format",
+    "prepare": "husky",
+    "reset-project": "node ./scripts/reset-project.js"
   },
   "dependencies": {
     "@expo/vector-icons": "^14.1.0",
@@ -41,9 +45,28 @@
   "devDependencies": {
     "@babel/core": "^7.25.2",
     "@types/react": "~19.0.10",
-    "typescript": "~5.8.3",
+    "@typescript-eslint/eslint-plugin": "^8.33.1",
+    "@typescript-eslint/parser": "^8.33.1",
     "eslint": "^9.25.0",
-    "eslint-config-expo": "~9.2.0"
+    "eslint-config-expo": "~9.2.0",
+    "eslint-config-prettier": "^10.1.5",
+    "eslint-plugin-prettier": "^5.4.1",
+    "eslint-plugin-react": "^7.37.5",
+    "eslint-plugin-react-hooks": "^5.2.0",
+    "eslint-plugin-react-native": "^5.0.0",
+    "husky": "^9.1.7",
+    "lint-staged": "^15.5.2",
+    "prettier": "^3.5.3",
+    "typescript": "~5.8.3"
   },
-  "private": true
+  "private": true,
+  "lint-staged": {
+    "**/*.{js,jsx,ts,tsx}": [
+      "eslint --fix --max-warnings 0 --no-warn-ignored",
+      "prettier --write"
+    ],
+    "**/*.{json,md}": [
+      "prettier --write"
+    ]
+  }
 }
