@@ -1,29 +1,51 @@
 import migrations from '@/drizzle/migrations';
-import db, { DATABASE_NAME, expoDB } from '@/src/core/db';
+import db, { DATABASE_NAME } from '@/src/core/db';
 import { useMigrations } from 'drizzle-orm/expo-sqlite/migrator';
 import { Stack } from 'expo-router';
 import * as SQLite from 'expo-sqlite';
-import { useSQLiteDevTools } from 'expo-sqlite-devtools';
-import { ActivityIndicator, Text, View } from 'react-native';
+import { ActivityIndicator, Platform, StyleSheet, Text, View } from 'react-native';
 
-export default function RootLayout() {
+const AppContent = () => (
+  <Stack>
+    <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
+    <Stack.Screen name="+not-found" />
+  </Stack>
+);
+
+const MobileLayout = () => {
   const { success, error } = useMigrations(db, migrations);
 
-  useSQLiteDevTools(expoDB);
-
   if (error) {
-    return <Text>{error.message}</Text>;
+    return <Text>Database error: {error.message}</Text>;
   }
+
   if (!success) {
     return (
-      <View>
-        <ActivityIndicator />
+      <View style={styles.container}>
+        <ActivityIndicator size="large" />
       </View>
     );
   }
+
   return (
     <SQLite.SQLiteProvider databaseName={DATABASE_NAME}>
-      <Stack />
+      <AppContent />
     </SQLite.SQLiteProvider>
   );
+};
+
+export default function RootLayout() {
+  if (Platform.OS === 'web') {
+    return <AppContent />;
+  }
+
+  return <MobileLayout />;
 }
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+});
