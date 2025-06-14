@@ -4,6 +4,7 @@ import { useMigrations } from 'drizzle-orm/expo-sqlite/migrator';
 import { Stack } from 'expo-router';
 import * as SQLite from 'expo-sqlite';
 import { ActivityIndicator, Platform, StyleSheet, Text, View } from 'react-native';
+import '../global.css';
 
 const AppContent = () => (
   <Stack>
