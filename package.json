@@ -12,7 +12,8 @@
     "format": "prettier --write \"**/*.{js,jsx,ts,tsx,json,md}\"",
     "validate": "npm run lint && npm run format",
     "prepare": "husky",
-    "reset-project": "node ./scripts/reset-project.js"
+    "reset-project": "node ./scripts/reset-project.js",
+    "check-stage": "npx lint-staged"
   },
   "dependencies": {
     "@expo/vector-icons": "^14.1.0",
