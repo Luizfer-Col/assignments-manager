@@ -3,7 +3,7 @@ import db, { DATABASE_NAME } from '@/src/core/db';
 import { useMigrations } from 'drizzle-orm/expo-sqlite/migrator';
 import { Stack } from 'expo-router';
 import * as SQLite from 'expo-sqlite';
-import { ActivityIndicator, Platform, StyleSheet, Text, View } from 'react-native';
+import { ActivityIndicator, Platform, Text, View } from 'react-native';
 import '../global.css';
 
 const AppContent = () => (
@@ -22,7 +22,7 @@ const MobileLayout = () => {
 
   if (!success) {
     return (
-      <View style={styles.container}>
+      <View className="flex-1 justify-center items-center">
         <ActivityIndicator size="large" />
       </View>
     );
@@ -42,11 +42,3 @@ export default function RootLayout() {
 
   return <MobileLayout />;
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-  },
-});
