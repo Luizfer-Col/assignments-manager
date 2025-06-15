@@ -28,7 +28,11 @@ const AppContent = () => {
   return (
     <ThemeProvider value={isDark ? DARK_THEME : LIGHT_THEME}>
       <StatusBar style={isDark ? 'light' : 'dark'} />
-      <Stack>
+      <Stack
+        screenOptions={{
+          headerShown: false,
+        }}
+      >
         <Stack.Screen name="(tabs)" />
         <Stack.Screen name="+not-found" />
       </Stack>
