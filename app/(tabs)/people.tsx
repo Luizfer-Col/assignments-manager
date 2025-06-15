@@ -1,17 +1,9 @@
-import { StyleSheet, Text, View } from 'react-native';
+import { Text, View } from 'react-native';
 
 export default function PeopleScreen() {
   return (
-    <View style={styles.container}>
-      <Text>Tab People</Text>
+    <View className="flex-1 p-6">
+      <Text className="text-xl">Personas</Text>
     </View>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-  },
-});
