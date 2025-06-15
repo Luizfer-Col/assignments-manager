@@ -13,7 +13,8 @@
     "validate": "npm run lint && npm run format",
     "prepare": "husky",
     "reset-project": "node ./scripts/reset-project.js",
-    "check-stage": "npx lint-staged"
+    "check-stage": "npx lint-staged",
+    "reset-last-commit": "git reset --soft HEAD~1"
   },
   "dependencies": {
     "@expo/vector-icons": "^14.1.0",
