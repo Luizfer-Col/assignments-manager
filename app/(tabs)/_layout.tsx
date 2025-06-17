@@ -7,6 +7,7 @@ export default function TabLayout() {
     <Tabs
       screenOptions={{
         tabBarActiveTintColor: '#3C7F8B',
+        headerShown: false,
         tabBarStyle: {
           backgroundColor: '#F1F1F1',
           borderTopColor: '#3C7F8B',
@@ -19,7 +20,6 @@ export default function TabLayout() {
         name="index"
         options={{
           title: 'Inicio',
-          headerTitle: 'Gestor de Asignaciones',
           tabBarIcon: ({ color }) => <Ionicons name="home" size={24} color={color} />,
         }}
       />
@@ -27,7 +27,6 @@ export default function TabLayout() {
         name="people"
         options={{
           title: 'Personas',
-          headerTitle: 'Gestión de Personas',
           tabBarIcon: ({ color }) => <Ionicons name="people" size={24} color={color} />,
         }}
       />
@@ -35,7 +34,6 @@ export default function TabLayout() {
         name="events"
         options={{
           title: 'Eventos',
-          headerTitle: 'Gestión de Eventos',
           tabBarIcon: ({ color }) => <Ionicons name="calendar" size={24} color={color} />,
         }}
       />
