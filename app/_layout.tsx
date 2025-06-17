@@ -4,6 +4,7 @@ import { NAV_THEME } from '@/lib/constants';
 import { useColorScheme } from '@/lib/useColorScheme';
 import db, { DATABASE_NAME } from '@/src/core/db';
 import { DarkTheme, DefaultTheme, ThemeProvider } from '@react-navigation/native';
+import { PortalHost } from '@rn-primitives/portal';
 import { useMigrations } from 'drizzle-orm/expo-sqlite/migrator';
 import { Stack } from 'expo-router';
 import * as SQLite from 'expo-sqlite';
@@ -36,6 +37,7 @@ const AppContent = () => {
         <Stack.Screen name="(tabs)" />
         <Stack.Screen name="+not-found" />
       </Stack>
+      <PortalHost />
     </ThemeProvider>
   );
 };
