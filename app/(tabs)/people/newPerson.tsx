@@ -21,7 +21,6 @@ const personalInfoSchema = z.object({
   lastName: z.string().min(1, 'Apellido es requerido'),
   phone: z.string().optional(),
   email: z.string().email('Email inválido').optional().or(z.literal('')),
-  emails: z.string().email('Email inválido').optional().or(z.literal('')),
   address: z.string().optional(),
   spiritualStatus: z.enum([
     'Estudiante',
