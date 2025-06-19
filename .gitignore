@@ -41,3 +41,9 @@ app-example
 # android/ios builds
 /android
 /ios
+
+# misc
+*.keystore
+android/keystores
+
+credentials.json
